@@ -60,6 +60,7 @@ function init() {
     div_select_wrapper.append(select);
     div_select_colors.append(div_select_wrapper);
   }
+  createRandomCode();
 }
 
 function createRandomCode() {
@@ -68,5 +69,18 @@ function createRandomCode() {
     randomCode.push(random_color);
   }
 }
+
+crack_button.addEventListener("click", (e) => {
+  let input_colors = document.querySelectorAll(".select-wrapper>select");
+  let input_colors_arr = [];
+  for (const v of input_colors) {
+    input_colors_arr.push(v.value);
+  }
+  show("left", input_colors_arr);
+  correctionArray = createCorrectionArray(input_colors_arr);
+  show("right", correctionArray);
+  crackTry++;
+  checkWin(correctionArray);
+});
 
 init();
