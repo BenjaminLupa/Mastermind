@@ -62,4 +62,11 @@ function init() {
   }
 }
 
+function createRandomCode() {
+  for (let id = 0; id <= codeLength; id++) {
+    let random_color = colors[Math.floor(Math.random() * colors.length)];
+    randomCode.push(random_color);
+  }
+}
+
 init();
