@@ -83,4 +83,13 @@ crack_button.addEventListener("click", (e) => {
   checkWin(correctionArray);
 });
 
+function show(type, colors) {
+  let tryView = document.querySelectorAll(
+    "#try-" + crackTry + ">." + type + "div"
+  );
+  tryView.forEach((v, i) => {
+    v.setAttribute("style", "background-color:" + colors[i]);
+  });
+}
+
 init();
