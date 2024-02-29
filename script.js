@@ -32,7 +32,34 @@ function init() {
       let div_r = document.createElement("div");
       divLeft.append(div_l);
       divRight.append(div_r);
-      main_display.prepend(divTry);
     }
+    divTry.append(divLeft);
+    divTry.append(divRight);
+    main_display.prepend(divTry);
+  }
+  //Code Eingabe
+  for (let i = 1; i <= codeLength; i++) {
+    let div_select_wrapper = document.createElement("div");
+    div_select_wrapper.setAttribute("class", "select-wrapper");
+    let select = document.createElement("select");
+
+    //Farben
+    for (const color of colors) {
+      let option = document.createElement("option");
+      option.setAttribute("style", "background-color:" + color);
+      option.setAttribute("value", color);
+      select.append(option);
+    }
+
+    select.setAttribute("style", "background-color:" + colors[0]);
+
+    select.addEventListener("change", (e) => {
+      e.target.setAttribute("style", "background-color:" + e.target.value);
+    });
+
+    div_select_wrapper.append(select);
+    div_select_colors.append(div_select_wrapper);
   }
 }
+
+init();

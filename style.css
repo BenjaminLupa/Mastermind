@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html {
+  background-color: greenyellow;
+}
+#game {
+  text-align: center;
+  color: crimson;
+  border: 5px solid green;
+  max-width: 400px;
+  margin: 10px auto;
+}
+header,
+footer {
+  background-color: cornsilk;
+  padding: 10px;
+}
+
+main {
+  margin: 10px auto;
+}
+
+.try {
+  display: flex;
+  justify-content: space-around;
+}
+
+.left,
+.right {
+  display: flex;
+}
+
+.left > div,
+.right > div {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: darkgrey;
+  margin: 5px;
+}
