@@ -26,5 +26,13 @@ function init() {
 
     let divRight = document.createElement("div");
     divRight.setAttribute("class", "right");
+
+    for (let i = 1; i <= codeLength; i++) {
+      let div_l = document.createElement("div");
+      let div_r = document.createElement("div");
+      divLeft.append(div_l);
+      divRight.append(div_r);
+      main_display.prepend(divTry);
+    }
   }
 }
