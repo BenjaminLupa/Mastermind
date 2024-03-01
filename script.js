@@ -1,6 +1,6 @@
 const main_display = document.querySelector("main");
 const div_select_colors = document.querySelector("#div-select-color");
-const crack_button = document.querySelector("crack-btn");
+const crack_button = document.querySelector("#crack-btn");
 
 let codeLength = 4;
 let trys = 8;
@@ -73,7 +73,7 @@ function createRandomCode() {
 crack_button.addEventListener("click", (e) => {
   let input_colors = document.querySelectorAll(".select-wrapper>select");
   let input_colors_arr = [];
-  for (const v of input_colors) {
+  for (let v of input_colors) {
     input_colors_arr.push(v.value);
   }
   show("left", input_colors_arr);
@@ -90,6 +90,51 @@ function show(type, colors) {
   tryView.forEach((v, i) => {
     v.setAttribute("style", "background-color:" + colors[i]);
   });
+}
+
+function createCorrectionArray(input_colors_arr) {
+  let random_code_copy = [...randomCode];
+  let correctionArray = [];
+
+  //Richtige Position
+  for (const i in random_code_copy) {
+    if (random_code_copy[i] == input_colors_arr[i]) {
+      random_code_copy[i] = null;
+      input_colors_arr[i] = null;
+      correctionArray.push("red");
+    }
+  }
+
+  //Falsche Position
+  for (const i in random_code_copy) {
+    for (const j in input_colors_arr) {
+      if (
+        random_code_copy[i] != null &&
+        random_code_copy[i] == input_colors_arr[j]
+      ) {
+        random_code_copy[i] = null;
+        input_colors_arr[j] = null;
+        correctionArray.push("white");
+      }
+    }
+  }
+  return correctionArray;
+}
+
+function checkWin(correction_array) {
+  let countCorrect = 0;
+  for (let v of correction_array) {
+    if (v == "red") {
+      countCorrect++;
+    }
+  }
+  if (countCorrect == codeLength) {
+    alert("You Win");
+    init();
+  } else if (crackTry > trys) {
+    alert("You Lose");
+    init();
+  }
 }
 
 init();

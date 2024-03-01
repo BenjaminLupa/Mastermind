@@ -40,3 +40,36 @@ main {
   background-color: darkgrey;
   margin: 5px;
 }
+
+.select-wrapper {
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.select-wrapper select {
+  width: 35px;
+  height: 35px;
+  border: 0;
+  outline: none;
+}
+
+input[type="button"] {
+  background-color: rgb(86, 37, 37);
+  cursor: pointer;
+  color: #cccccc;
+  border-radius: 12px;
+  height: 35px;
+  width: 100px;
+  margin: 5px auto;
+  transition: 0.5s;
+}
+
+select:hover,
+input:hover {
+  opacity: 0.8;
+}
+
+input[type="button"]:active {
+  background-color: rgb(224, 46, 46);
+}
